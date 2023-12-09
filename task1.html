@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .todo-container {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>Todo List</h1>
+    <input type="text" id="todoInput" placeholder="Add a new todo">
+    <button onclick="addTodo()">Add</button>
+    <ul id="todoList"></ul>
+  </div>
+
+  <script>
+    // JavaScript code
+    function addTodo() {
+      const todoInput = document.getElementById('todoInput');
+      const todoList = document.getElementById('todoList');
+
+      if (todoInput.value !== '') {
+        const li = document.createElement('li');
+        li.innerText = todoInput.value;
+        todoList.appendChild(li);
+        todoInput.value = '';
+
+        // Add event listener to mark a todo as done when clicked
+        li.addEventListener('click', function () {
+          li.classList.toggle('done');
+        });
+      } else {
+        alert('Please enter a todo!');
+      }
+    }
+  </script>
+</body>
+</html>
